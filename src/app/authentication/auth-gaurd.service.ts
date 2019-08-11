@@ -5,18 +5,26 @@ import {AuthenticationService} from './authentication.service';
 @Injectable()
 export class AuthGaurdService implements CanActivate {
 
-  constructor(private router: Router, private authenticationService: AuthenticationService) {
-  }
-
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.authenticationService.isUserLoggedIn()) {
-      return true;
+    constructor(private router: Router, private authenticationService: AuthenticationService) {
     }
-    localStorage.clear();
-    this.router.navigate(['login']);
-    return false;
 
-  }
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
+        const path = state.url.split('/');
+        if (path[1] === 'dashboard') {
+            return this.authenticationService.isUserLoggedIn(path[1]);
+            return true;
+        } else {
+            return this.authenticationService.isUserLoggedIn(path[1]);
+            return true;
+        }
+
+
+        localStorage.clear();
+        this.router.navigate(['login']);
+        return false;
+
+    }
 
 }
 

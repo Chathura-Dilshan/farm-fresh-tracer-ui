@@ -1,9 +1,8 @@
 <div class="logo">
-    <a href="#" class="simple-text">
-<!--        <div class="logo-img">-->
-<!--            <img src="#"/>-->
-<!--        </div>-->
-        Farm Fresh Tracer
+    <a href="/dashboard" class="simple-text">
+        <div class="logo-img">
+            <img src="./assets/img/logoNew.png"/>
+        </div>
     </a>
 </div>
 <div class="sidebar-wrapper">
@@ -55,8 +54,8 @@
     </ul>
   </div>
     <ul class="nav">
-        <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
-            <a class="nav-link" [routerLink]="[menuItem.path]">
+        <li routerLinkActive="active"     *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
+            <a class="nav-link" *ngIf="authenticationService.isUserLoggedIn(menuItem.path)" [routerLink]="'/'+[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>
                 <p>{{menuItem.title}}</p>
             </a>

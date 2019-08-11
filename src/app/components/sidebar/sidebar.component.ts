@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthenticationService} from '../../authentication/authentication.service';
 
 declare const $: any;
 
@@ -10,11 +11,11 @@ declare interface RouteInfo {
 }
 
 export const ROUTES: RouteInfo[] = [
-    {path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: ''},
-    {path: '/user-profile', title: 'User Profile', icon: 'person', class: ''},
-    {path: '/vehicle', title: 'Vehicle', icon: 'directions_car', class: ''},
-    {path: '/food', title: 'Food', icon: 'fastfood', class: ''},
-    {path: '/farm', title: 'Farm', icon: 'spa', class: ''},
+    {path: 'dashboard', title: 'Dashboard', icon: 'dashboard', class: ''},
+    {path: 'user-profile', title: 'User Profile', icon: 'person', class: ''},
+    {path: 'vehicle', title: 'Vehicle', icon: 'directions_car', class: ''},
+    {path: 'food', title: 'Food', icon: 'fastfood', class: ''},
+    {path: 'farm', title: 'Farm', icon: 'spa', class: ''},
     // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
     // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
     // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
@@ -31,11 +32,13 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
     menuItems: any[];
 
-    constructor() {
+    constructor(private authenticationService: AuthenticationService) {
     }
 
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+
+
     }
 
     isMobileMenu() {
