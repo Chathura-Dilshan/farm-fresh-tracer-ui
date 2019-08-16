@@ -32,6 +32,7 @@ export class AuthenticationService {
             .pipe(map(res => res))
             .subscribe(
                 data => {
+                    this.logData = null;
                     this.logData = data;
                     if (data == null) {
                         localStorage.clear();
@@ -45,14 +46,15 @@ export class AuthenticationService {
                         return false;
                     } else {
                         console.log(data);
+                        localStorage.clear();
                         localStorage.setItem('username', loginData.username);
 
-
+                        this.auth = [];
                         for (const argument of this.logData.roles) {
-                            if (this.auth.indexOf(argument) === -1) {
-                                this.auth.push(argument.role_name);
-                            }
-
+                            this.auth.push(argument.role_name);
+                            // if (this.auth.indexOf(argument) === -1) {
+                            //
+                            // }
                         }
 
                         console.log(this.auth);
@@ -78,17 +80,31 @@ export class AuthenticationService {
 
     }
 
-    isUserLoggedIn() {
+    isUserLoggedIn(documentLink) {
+        console.log('documentLink=', documentLink);
         const user = localStorage.getItem('username');
-        if (!(user === null)) {
-            return true;
-        } else {
-            return false;
+        this.userAuthorityList = JSON.parse(localStorage.getItem('authorityList'));
+        let enableView = false;
+        const role = documentLink;
+        if (this.userAuthorityList !== null && user !== null) {
+            for (const userAuth of this.userAuthorityList) {
+                if (userAuth === role) {
+                    enableView = true;
+                    break;
+                }
+            }
         }
+        return enableView;
+        // if (!(user === null)) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 
     logout() {
         localStorage.clear();
+        this.router.navigate(['login']);
     }
 
 

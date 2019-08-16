@@ -11,6 +11,7 @@ import {UpgradeComponent} from '../../upgrade/upgrade.component';
 import {VehicleComponent} from '../../vehicle/vehicle.component';
 import {FoodComponent} from '../../food/food.component';
 import {FarmComponent} from '../../farm/farm.component';
+import {AuthGaurdService} from '../../authentication/auth-gaurd.service';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -60,11 +61,11 @@ export const AdminLayoutRoutes: Routes = [
     // },
 
     // {path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'user-profile', component: UserProfileComponent},
-    {path: 'vehicle', component: VehicleComponent},
-    {path: 'food', component: FoodComponent},
-    {path: 'farm', component: FarmComponent},
+    {path: 'dashboard', canActivate: [AuthGaurdService], component: DashboardComponent},
+    {path: 'user-profile', canActivate: [AuthGaurdService], component: UserProfileComponent},
+    {path: 'vehicle', canActivate: [AuthGaurdService], component: VehicleComponent},
+    {path: 'food', canActivate: [AuthGaurdService], component: FoodComponent},
+    {path: 'farm', canActivate: [AuthGaurdService], component: FarmComponent},
     // {path: 'table-list', component: TableListComponent},
     // {path: 'typography', component: TypographyComponent},
     // {path: 'icons', component: IconsComponent},
