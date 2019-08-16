@@ -32,6 +32,7 @@ export class AuthenticationService {
             .pipe(map(res => res))
             .subscribe(
                 data => {
+                    this.logData = null;
                     this.logData = data;
                     if (data == null) {
                         localStorage.clear();
@@ -45,14 +46,15 @@ export class AuthenticationService {
                         return false;
                     } else {
                         console.log(data);
+                        localStorage.clear();
                         localStorage.setItem('username', loginData.username);
 
-
+                        this.auth = [];
                         for (const argument of this.logData.roles) {
-                            if (this.auth.indexOf(argument) === -1) {
-                                this.auth.push(argument.role_name);
-                            }
-
+                            this.auth.push(argument.role_name);
+                            // if (this.auth.indexOf(argument) === -1) {
+                            //
+                            // }
                         }
 
                         console.log(this.auth);
@@ -102,6 +104,7 @@ export class AuthenticationService {
 
     logout() {
         localStorage.clear();
+        this.router.navigate(['login']);
     }
 
 

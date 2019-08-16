@@ -17,6 +17,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGaurdService} from './authentication/auth-gaurd.service';
 import {HttpService} from './authentication/http.service';
+import { GuestUserCreationComponent } from './session/guest-user-creation/guest-user-creation.component';
 
 @NgModule({
   imports: [
@@ -37,7 +38,8 @@ import {HttpService} from './authentication/http.service';
   declarations: [
     AppComponent,
     LoginComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    GuestUserCreationComponent
 
   ],
   providers: [
