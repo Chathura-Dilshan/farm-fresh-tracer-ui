@@ -12,7 +12,7 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatRippleModule,
-  MatSelectModule,
+  MatSelectModule, MatSnackBarModule,
   MatTabsModule,
   MatTooltipModule
 } from '@angular/material';
@@ -31,6 +31,8 @@ import {MapsComponent} from '../../maps/maps.component';
 import {IconsComponent} from '../../icons/icons.component';
 import {TypographyComponent} from '../../typography/typography.component';
 import {TableListComponent} from '../../table-list/table-list.component';
+import {QRCodeModule} from 'angularx-qrcode';
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import {TableListComponent} from '../../table-list/table-list.component';
     MatSelectModule,
     MatTooltipModule,
     MatTabsModule,
-    MatCardModule
+    MatCardModule,
+    QRCodeModule,
+    NgxPrintModule
   ],
   declarations: [
     UserProfileComponent,

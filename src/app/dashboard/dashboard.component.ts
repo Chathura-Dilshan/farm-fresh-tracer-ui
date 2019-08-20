@@ -7,8 +7,11 @@ import * as Chartist from 'chartist';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+    public myAngularxQrCode: string = null;
 
-  constructor() { }
+  constructor() {
+      this.myAngularxQrCode = 'Your QR code data string';
+  }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
