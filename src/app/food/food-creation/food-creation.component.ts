@@ -34,20 +34,19 @@ export class FoodCreationComponent implements OnInit {
 
     saveFood(): void {
         this.foodService.postFood(this.food).pipe(take(1)).subscribe(food => {
-            this.food = food;
-            this.snackBar.open('Food Saved', 'success', {
-                duration: 3000
-            });
-            this.isUpdate = true;
-            this.isNew = true;
-        },
-        error => {
-            this.snackBar.open(error.error, 'success', {
-                duration: 3000
-            });
-        }
-    )
-        ;
+                this.food = food;
+                this.snackBar.open('Food Saved', 'success', {
+                    duration: 3000
+                });
+                this.isUpdate = true;
+                this.isNew = true;
+            },
+            error => {
+                this.snackBar.open(error.error, 'success', {
+                    duration: 3000
+                });
+            }
+        )
     }
 
     updateFood(): void {
