@@ -33,6 +33,7 @@ import {TypographyComponent} from '../../typography/typography.component';
 import {TableListComponent} from '../../table-list/table-list.component';
 import {QRCodeModule} from 'angularx-qrcode';
 import {NgxPrintModule} from 'ngx-print';
+import {FoodService} from '../../food/food.service';
 
 @NgModule({
   imports: [
@@ -69,6 +70,9 @@ import {NgxPrintModule} from 'ngx-print';
     // MapsComponent,
     // NotificationsComponent,
     // UpgradeComponent
+  ],
+  providers: [
+      FoodService
   ]
 })
 

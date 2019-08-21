@@ -45,9 +45,9 @@ export class AuthenticationService {
 
                         return false;
                     } else {
-                        console.log(data);
                         localStorage.clear();
                         localStorage.setItem('username', loginData.username);
+                        localStorage.setItem('password', loginData.password);
 
                         this.auth = [];
                         for (const argument of this.logData.roles) {
@@ -57,7 +57,7 @@ export class AuthenticationService {
                             // }
                         }
 
-                        console.log(this.auth);
+                        // console.log(this.auth);
                         localStorage.setItem('authorityList', JSON.stringify(this.auth));
                         this.router.navigate(['dashboard']);
                         return true;
@@ -81,7 +81,7 @@ export class AuthenticationService {
     }
 
     isUserLoggedIn(documentLink) {
-        console.log('documentLink=', documentLink);
+        // console.log('documentLink=', documentLink);
         const user = localStorage.getItem('username');
         this.userAuthorityList = JSON.parse(localStorage.getItem('authorityList'));
         let enableView = false;

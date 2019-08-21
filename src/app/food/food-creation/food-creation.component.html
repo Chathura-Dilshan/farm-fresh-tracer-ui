@@ -1,22 +1,106 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-body">
-            <form>
+            <form #foodForm="ngForm">
                 <div class="row">
                     <div class="col-md-6">
+                        <mat-label>Food Name</mat-label>
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <input matInput placeholder="Food code" type="text">
+                            <input matInput placeholder="Food Name" name="foodName" type="text" [(ngModel)]="food.foodName" #FoodName="ngModel"
+                                   required>
+                        </mat-form-field>
+                        <div *ngIf="FoodName.errors && (FoodName.dirty || FoodName.touched)">
+                            <small class="gene-block" *ngIf="FoodName.errors.required && FoodName.touched"
+                                   class="mat-text-warn">
+                                You must include a food name.
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h4>Nutrition Details</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Calorie</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Calorie" type="text" name="calorie" [(ngModel)]="food.calorie" #Calorie="ngModel">
                         </mat-form-field>
                     </div>
                     <div class="col-md-6">
+                        <mat-label>Fat</mat-label>
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <input matInput placeholder="Food name" type="text">
+                            <input matInput placeholder="Fat" type="text" name="fat" [(ngModel)]="food.fat" #Fat="ngModel">
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Cholesterol</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Cholesterol" type="text" name="cholesterol" [(ngModel)]="food.cholesterol" #Cholesterol="ngModel">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-label>Sodium</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Sodium" type="text" name="sodium" [(ngModel)]="food.sodium" #Sodium="ngModel">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Protein</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Protein" type="text" name="protein" [(ngModel)]="food.protein" #Protein="ngModel">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-label>Carbohydrate</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Carbohydrate" type="text" name="carbohydrate" [(ngModel)]="food.carbohydrate" #Carbohydrate="ngModel">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Vitamin A</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="vitamin A" type="text" name="vitaminA" [(ngModel)]="food.vitaminA" #vitaminA="ngModel">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-label>vitamin C</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="vitamin C" type="text" name="vitaminC" [(ngModel)]="food.vitaminC" #vitaminC="ngModel">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Iron</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Iron" type="text" name="iron" [(ngModel)]="food.iron" #Iron="ngModel">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-label>Calcium</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Calcium" type="text" name="calcium" [(ngModel)]="food.calcium" #Calcium="ngModel">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-label>Sugar</mat-label>
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <input matInput placeholder="Sugar" type="text" name="sugars" [(ngModel)]="food.sugars" #Sugars="ngModel">
                         </mat-form-field>
                     </div>
                 </div>
 
 
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save Food
+                <button mat-raised-button (click)="saveFood()" type="submit" class="btn btn-danger pull-left">Save Food
                 </button>
                 <div class="clearfix"></div>
             </form>
