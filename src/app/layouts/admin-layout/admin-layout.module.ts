@@ -34,6 +34,7 @@ import {TableListComponent} from '../../table-list/table-list.component';
 import {QRCodeModule} from 'angularx-qrcode';
 import {NgxPrintModule} from 'ngx-print';
 import {FoodService} from '../../food/food.service';
+import {ZXingScannerModule} from '@zxing/ngx-scanner';
 
 @NgModule({
   imports: [
@@ -50,7 +51,8 @@ import {FoodService} from '../../food/food.service';
     MatTabsModule,
     MatCardModule,
     QRCodeModule,
-    NgxPrintModule
+    NgxPrintModule,
+    ZXingScannerModule
   ],
   declarations: [
     UserProfileComponent,

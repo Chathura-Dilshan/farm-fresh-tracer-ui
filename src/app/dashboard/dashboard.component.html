@@ -413,8 +413,18 @@
 <!--      </div>-->
 <!--  </div>-->
 <!--</div>-->
-<div  id="print-section">
-    <qrcode [qrdata]="myAngularxQrCode" [size]="100" [level]="'M'"></qrcode>
+<!--<div  id="print-section">-->
+<!--    <qrcode [qrdata]="myAngularxQrCode" [size]="100" [level]="'M'"></qrcode>-->
+<!--</div>-->
+
+<div class="center">
+    <zxing-scanner start="true"
+                   [formats]="allowedFormats"
+                   (scanError)="scanErrorHandler($event)"
+                   [torch]="false"
+                   (scanSuccess)="handleQrCodeResult($event)">
+
+    </zxing-scanner>
 </div>
 
 <button printSectionId="print-section" ngxPrint>print</button>
