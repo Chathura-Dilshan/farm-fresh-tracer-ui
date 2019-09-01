@@ -51,7 +51,7 @@ export class AuthenticationService {
 
                         this.auth = [];
                         for (const argument of this.logData.roles) {
-                            this.auth.push(argument.role_name);
+                            this.auth.push(argument.roleName);
                             // if (this.auth.indexOf(argument) === -1) {
                             //
                             // }

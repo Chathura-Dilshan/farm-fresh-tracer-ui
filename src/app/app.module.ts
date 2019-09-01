@@ -10,15 +10,14 @@ import {ComponentsModule} from './components/components.module';
 import {AppComponent} from './app.component';
 import {AgmCoreModule} from '@agm/core';
 import {AdminLayoutComponent} from './layouts/admin-layout/admin-layout.component';
-import {LoginComponent} from './session/login/login.component';
+import {GuestUserCreationDialogComponent, LoginComponent} from './session/login/login.component';
 import {AuthenticationService} from './authentication/authentication.service';
-import {MatFormFieldModule, MatInputModule, MatSnackBarModule} from '@angular/material';
+import {MatDialogModule, MatFormFieldModule, MatInputModule, MatSnackBarModule} from '@angular/material';
 import {HttpClientModule} from '@angular/common/http';
-import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGaurdService} from './authentication/auth-gaurd.service';
 import {HttpService} from './authentication/http.service';
-import { GuestUserCreationComponent } from './session/guest-user-creation/guest-user-creation.component';
-import {QRCodeModule} from 'angularx-qrcode';
+import {GuestUserCreationComponent} from './session/guest-user-creation/guest-user-creation.component';
+import {UserCreationService} from './session/guest-user-creation/user-creation.service';
 
 @NgModule({
   imports: [
@@ -32,21 +31,28 @@ import {QRCodeModule} from 'angularx-qrcode';
     RouterModule,
     AppRoutingModule,
     MatSnackBarModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    }),
   ],
   declarations: [
     AppComponent,
     LoginComponent,
     AdminLayoutComponent,
-    GuestUserCreationComponent
+    GuestUserCreationComponent,
+    GuestUserCreationDialogComponent
 
   ],
   providers: [
     AuthenticationService,
     AuthGaurdService,
-    HttpService
+    HttpService,
+    UserCreationService,
+    MatDialogModule
+  ],
+  entryComponents: [
+    GuestUserCreationDialogComponent
   ],
   exports: [],
   bootstrap: [AppComponent]

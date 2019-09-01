@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/',
-  webSocketUrl: 'http://localhost:8080/socket-web'
+  apiUrl: 'http://localhost:8450/',
+  webSocketUrl: 'http://localhost:8450/socket-web'
 };
