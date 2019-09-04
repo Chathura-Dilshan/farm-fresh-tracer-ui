@@ -8,6 +8,8 @@ export class User {
     firstName: string;
     secondName: string;
     roles: Roles[];
+    rolesList: number[];
     securityAnswer: string;
     userType: string;
+    roleSearch = '';
 }

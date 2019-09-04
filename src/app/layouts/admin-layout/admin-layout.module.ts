@@ -35,6 +35,10 @@ import {QRCodeModule} from 'angularx-qrcode';
 import {NgxPrintModule} from 'ngx-print';
 import {FoodService} from '../../food/food.service';
 import {ZXingScannerModule} from '@zxing/ngx-scanner';
+import {RoleCreationComponent} from '../../session/role/role-creation/role-creation.component';
+import {RoleService} from '../../session/role/role.service';
+import {UserCretionComponent} from '../../session/user/user-cretion/user-cretion.component';
+import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
 
 @NgModule({
   imports: [
@@ -52,7 +56,8 @@ import {ZXingScannerModule} from '@zxing/ngx-scanner';
     MatCardModule,
     QRCodeModule,
     NgxPrintModule,
-    ZXingScannerModule
+    ZXingScannerModule,
+    NgxMatSelectSearchModule
   ],
   declarations: [
     UserProfileComponent,
@@ -65,7 +70,9 @@ import {ZXingScannerModule} from '@zxing/ngx-scanner';
     FarmCreationComponent,
     FarmSearchComponent,
     FarmComponent,
-    DashboardComponent
+    DashboardComponent,
+    RoleCreationComponent,
+    UserCretionComponent
     // TableListComponent,
     // TypographyComponent,
     // IconsComponent,
@@ -74,7 +81,8 @@ import {ZXingScannerModule} from '@zxing/ngx-scanner';
     // UpgradeComponent
   ],
   providers: [
-      FoodService
+      FoodService,
+      RoleService
   ]
 })
 

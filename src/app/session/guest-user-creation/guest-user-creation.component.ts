@@ -31,12 +31,12 @@ export class GuestUserCreationComponent implements OnInit {
         this.user.userType = 'GUEST_USER';
         this.userCreationService.postUser(this.user).pipe(take(1)).subscribe(user => {
                 this.user = user;
-                this.snackBar.open('Food Saved', 'success', {
+                this.snackBar.open('Sing in success', 'success', {
                     duration: 3000
                 });
             },
             error => {
-                this.snackBar.open(error.error, 'success', {
+                this.snackBar.open(error.error, 'error', {
                     duration: 3000
                 });
             }

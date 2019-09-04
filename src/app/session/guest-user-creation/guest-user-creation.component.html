@@ -1,7 +1,8 @@
 <div class="col-md-12">
     <div class="card ">
         <div class="card-body">
-            <div class="card-header">User Registration</div>
+            <div class="card-header">
+                <h4>Sign In...</h4></div>
             <form #guestUserCreationForm="ngForm">
                 <div class="row">
                     <div class="col-md-12">
@@ -62,7 +63,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                    <button  (click)="register()" [disabled]="guestUserCreationForm.invalid" mat-raised-button type="submit" class="btn btn-outline-danger col-md-12">
+                    <button  (click)="register()" [disabled]="guestUserCreationForm.invalid" mat-raised-button type="submit" class="btn btn-dark col-md-12">
                         Sign In
                     </button>
                     </div>

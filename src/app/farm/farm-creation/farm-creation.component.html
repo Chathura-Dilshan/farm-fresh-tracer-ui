@@ -1,16 +1,63 @@
 <div class="col-md-12">
     <div class="card">
         <div class="card-body">
-            <form>
+            <form #farmForm="ngForm">
                 <div class="row">
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <input matInput placeholder="Farm name" type="text">
+                            <mat-label>Farm Name</mat-label>
+                            <input matInput placeholder="Farm name" type="text"
+                                   [(ngModel)]="farm.farmName"
+                                   #FarmName="ngModel" name="farmName" required>
+
+                            <div *ngIf="FarmName.errors && (FarmName.dirty || FarmName.touched)">
+                                <small class="gene-block" *ngIf="FarmName.errors.required && FarmName.touched"
+                                       class="text-danger">
+                                    You must include a first name.
+                                </small>
+                            </div>
                         </mat-form-field>
                     </div>
+
                     <div class="col-md-6">
-                        <mat-form-field class="example-full-width" appearance="outline">
-                            <input matInput placeholder="Farm code" type="text">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Food</mat-label>
+                            <mat-select placeholder="Food" name="food"
+                                        [(ngModel)]="farm.foodSeq"
+                                        #Food="ngModel"  required>
+                                <mat-option *ngFor="let food of foodList"
+                                            [value]="food.foodSeq">
+                                    {{food.foodName}}
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="Food.errors && (Food.dirty || Food.touched)">
+                                <small class="gene-block" *ngIf="Food.errors.required && Food.touched"
+                                       class="text-danger">
+                                    You must include a role.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Pesticides Name</mat-label>
+                            <input matInput placeholder="Pesticides Name" type="text"
+                                   [(ngModel)]="farm.pesticideName"
+                                   #PesticidesName="ngModel" name="pesticideName">
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Fertilizer Name</mat-label>
+                            <input matInput placeholder="Fertilizer Name" type="text"
+                                   [(ngModel)]="farm.fertilizerName"
+                                   #FertilizerName="ngModel" name="fertilizerName">
                         </mat-form-field>
                     </div>
 
@@ -18,19 +65,31 @@
                 <div class="row">
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <textarea matInput placeholder="Address" type="text"></textarea>
+                            <mat-label>Address</mat-label>
+                            <textarea matInput placeholder="Address" type="text"
+                                      [(ngModel)]="farm.address"
+                                      #Address="ngModel" name="address" required></textarea>
                         </mat-form-field>
+                        <div *ngIf="Address.errors && (Address.dirty || Address.touched)">
+                            <small class="gene-block" *ngIf="Address.errors.required && Address.touched"
+                                   class="text-danger">
+                                You must include a address.
+                            </small>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width" appearance="outline">
-                            <input matInput placeholder="Contact No" type="text">
+                            <mat-label>Contact No</mat-label>
+                            <input matInput placeholder="Contact No" type="text"
+                                   [(ngModel)]="farm.contactNo"
+                                   #Contact="ngModel" name="contactNo">
                         </mat-form-field>
                     </div>
 
 
                 </div>
 
-                <button mat-raised-button type="submit" class="btn btn-danger pull-right">Save Farm
+                <button mat-raised-button type="submit"  (click)="saveFarm()" [disabled]="farmForm.invalid" class="btn btn-danger pull-right">Save Farm
                 </button>
                 <div class="clearfix"></div>
             </form>

@@ -29,7 +29,7 @@ export class FoodService {
     }
 
     getFoods(): Observable<Food[]> {
-        return this.http.get(HttpService.SERVICE_PATH + 'foods', {headers: null})
+        return this.http.get(HttpService.SERVICE_PATH + 'foods', {headers: this.headers})
             .pipe(map(response => <Food[]>response));
     }
 
