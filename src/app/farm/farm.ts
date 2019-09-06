@@ -1,4 +1,5 @@
 import {Food} from '../food/food';
+import {User} from '../session/guest-user-creation/user';
 
 export class Farm {
     farmSeq: number;
@@ -9,4 +10,6 @@ export class Farm {
     pesticideName: string;
     foodSeq: number;
     food: Food;
+    userSeq: number;
+    user: User;
 }

@@ -24,7 +24,7 @@
                             <mat-label>Food</mat-label>
                             <mat-select placeholder="Food" name="food"
                                         [(ngModel)]="farm.foodSeq"
-                                        #Food="ngModel"  required>
+                                        #Food="ngModel" required>
                                 <mat-option *ngFor="let food of foodList"
                                             [value]="food.foodSeq">
                                     {{food.foodName}}
@@ -45,12 +45,38 @@
 
                     <div class="col-md-6">
                         <mat-form-field appearance="outline">
+                            <mat-label>User</mat-label>
+                            <mat-select placeholder="User" name="user"
+                                        [(ngModel)]="farm.userSeq"
+                                        #User="ngModel" required>
+                                <mat-option *ngFor="let user of userList"
+                                            [value]="user.userSeq">
+                                    {{user.username}}
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="User.errors && (User.dirty || User.touched)">
+                                <small class="gene-block" *ngIf="User.errors.required && User.touched"
+                                       class="text-danger">
+                                    You must include a user.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
                             <mat-label>Pesticides Name</mat-label>
                             <input matInput placeholder="Pesticides Name" type="text"
                                    [(ngModel)]="farm.pesticideName"
                                    #PesticidesName="ngModel" name="pesticideName">
                         </mat-form-field>
                     </div>
+
+
+                </div>
+                <div class="row">
+
 
                     <div class="col-md-6">
                         <mat-form-field appearance="outline">
@@ -61,8 +87,6 @@
                         </mat-form-field>
                     </div>
 
-                </div>
-                <div class="row">
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width" appearance="outline">
                             <mat-label>Address</mat-label>
@@ -77,6 +101,8 @@
                             </small>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <mat-form-field class="example-full-width" appearance="outline">
                             <mat-label>Contact No</mat-label>
@@ -85,11 +111,10 @@
                                    #Contact="ngModel" name="contactNo">
                         </mat-form-field>
                     </div>
-
-
                 </div>
 
-                <button mat-raised-button type="submit"  (click)="saveFarm()" [disabled]="farmForm.invalid" class="btn btn-danger pull-right">Save Farm
+                <button mat-raised-button type="submit" (click)="saveFarm()" [disabled]="farmForm.invalid"
+                        class="btn btn-danger pull-right">Save Farm
                 </button>
                 <div class="clearfix"></div>
             </form>

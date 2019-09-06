@@ -4,6 +4,7 @@ import {FarmService} from '../../farm/farm.service';
 import {take} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material';
 import {FoodService} from '../../food/food.service';
+import {UserCreationService} from '../../session/guest-user-creation/user-creation.service';
 
 @Component({
   selector: 'app-farm-creation',
@@ -14,10 +15,12 @@ export class FarmCreationComponent implements OnInit {
 
   @Input() farm: Farm;
   foodList: any[];
+  userList: any[];
 
   constructor(
       private farmService: FarmService,
       private foodService: FoodService,
+      private userService: UserCreationService,
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
@@ -27,6 +30,9 @@ export class FarmCreationComponent implements OnInit {
 
     this.foodService.getFoods().pipe(take(1)).subscribe(
         response => this.foodList = response
+    );
+    this.userService.getUsers().pipe(take(1)).subscribe(
+        response => this.userList = response
     );
   }
 

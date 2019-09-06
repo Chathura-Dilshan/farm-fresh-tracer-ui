@@ -39,6 +39,9 @@ import {RoleCreationComponent} from '../../session/role/role-creation/role-creat
 import {RoleService} from '../../session/role/role.service';
 import {UserCretionComponent} from '../../session/user/user-cretion/user-cretion.component';
 import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
+import {LocationComponent} from '../../location/location.component';
+import {LocationCreationComponent} from '../../location/location-creation/location-creation.component';
+import {LocationService} from '../../location/location.service';
 
 @NgModule({
   imports: [
@@ -72,7 +75,9 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
     FarmComponent,
     DashboardComponent,
     RoleCreationComponent,
-    UserCretionComponent
+    UserCretionComponent,
+    LocationComponent,
+    LocationCreationComponent
     // TableListComponent,
     // TypographyComponent,
     // IconsComponent,
@@ -82,7 +87,8 @@ import {NgxMatSelectSearchModule} from 'ngx-mat-select-search';
   ],
   providers: [
       FoodService,
-      RoleService
+      RoleService,
+      LocationService
   ]
 })
 

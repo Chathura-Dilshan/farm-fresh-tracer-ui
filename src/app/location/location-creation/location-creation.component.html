@@ -1,0 +1,108 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <form #locationForm="ngForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Location Name</mat-label>
+                            <input matInput placeholder="Location name" type="text"
+                                   [(ngModel)]="location.locationName"
+                                   #LocationName="ngModel" name="locationName" required>
+
+                            <div *ngIf="LocationName.errors && (LocationName.dirty || LocationName.touched)">
+                                <small class="gene-block" *ngIf="LocationName.errors.required && LocationName.touched"
+                                       class="text-danger">
+                                    You must include a location name.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Location Type</mat-label>
+                            <mat-select placeholder="User" name="user"
+                                        [(ngModel)]="location.locationType"
+                                        #LocationType="ngModel" required>
+                                <mat-option value="WAREHOUSE">
+                                    WAREHOUSE
+                                </mat-option>
+                                <mat-option value="PACKING">
+                                    PACKING
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="LocationType.errors && (LocationType.dirty || LocationType.touched)">
+                                <small class="gene-block" *ngIf="User.errors.required && LocationType.touched"
+                                       class="text-danger">
+                                    You must include a Location Type.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>User</mat-label>
+                            <mat-select placeholder="User" name="user"
+                                        [(ngModel)]="location.userSeq"
+                                        #User="ngModel" required>
+                                <mat-option *ngFor="let user of userList"
+                                            [value]="user.userSeq">
+                                    {{user.username}}
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="User.errors && (User.dirty || User.touched)">
+                                <small class="gene-block" *ngIf="User.errors.required && User.touched"
+                                       class="text-danger">
+                                    You must include a user.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Address</mat-label>
+                            <textarea matInput placeholder="Address" type="text"
+                                      [(ngModel)]="location.address"
+                                      #Address="ngModel" name="address" required></textarea>
+                        </mat-form-field>
+                        <div *ngIf="Address.errors && (Address.dirty || Address.touched)">
+                            <small class="gene-block" *ngIf="Address.errors.required && Address.touched"
+                                   class="text-danger">
+                                You must include a address.
+                            </small>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Contact No</mat-label>
+                            <input matInput placeholder="Contact No" type="text"
+                                   [(ngModel)]="location.contactNo"
+                                   #Contact="ngModel" name="contactNo">
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <button mat-raised-button type="submit" (click)="saveLocation()" [disabled]="locationForm.invalid"
+                        class="btn btn-danger pull-right">Save Location
+                </button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>

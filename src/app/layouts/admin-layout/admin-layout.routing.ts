@@ -14,6 +14,7 @@ import {FarmComponent} from '../../farm/farm.component';
 import {AuthGaurdService} from '../../authentication/auth-gaurd.service';
 import {RoleCreationComponent} from '../../session/role/role-creation/role-creation.component';
 import {UserCretionComponent} from '../../session/user/user-cretion/user-cretion.component';
+import {LocationComponent} from '../../location/location.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -64,12 +65,13 @@ export const AdminLayoutRoutes: Routes = [
 
     // {path: '', component: DashboardComponent},
     {path: 'dashboard', canActivate: [AuthGaurdService], component: DashboardComponent},
-    {path: 'user-profile', canActivate: [AuthGaurdService], component: UserProfileComponent},
-    {path: 'vehicle', canActivate: [AuthGaurdService], component: VehicleComponent},
+    // {path: 'user-profile', canActivate: [AuthGaurdService], component: UserProfileComponent},
+    // {path: 'vehicle', canActivate: [AuthGaurdService], component: VehicleComponent},
     {path: 'food', canActivate: [AuthGaurdService], component: FoodComponent},
     {path: 'farm', canActivate: [AuthGaurdService], component: FarmComponent},
     {path: 'role', canActivate: [AuthGaurdService], component: RoleCreationComponent},
     {path: 'user', canActivate: [AuthGaurdService], component: UserCretionComponent},
+    {path: 'location', canActivate: [AuthGaurdService], component: LocationComponent},
     // {path: 'table-list', component: TableListComponent},
     // {path: 'typography', component: TypographyComponent},
     // {path: 'icons', component: IconsComponent},
