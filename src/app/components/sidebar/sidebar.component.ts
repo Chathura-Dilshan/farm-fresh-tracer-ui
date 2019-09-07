@@ -19,6 +19,7 @@ export const ROUTES: RouteInfo[] = [
     {path: 'role', title: 'Role', icon: 'equalizer', class: ''},
     {path: 'user', title: 'User', icon: 'person', class: ''},
     {path: 'location', title: 'Location', icon: 'location_searching', class: ''},
+    {path: 'bodyMassIndex', title: 'Body Mass Indexes', icon: 'how_to_reg', class: ''},
     // { path: '/table-list', title: 'Table List',  icon:'content_paste', class: '' },
     // { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
     // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },

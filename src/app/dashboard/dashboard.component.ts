@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import * as Chartist from 'chartist';
-import BarcodeFormat from '../sheard/BarcodeFormat';
 import {Router} from '@angular/router';
+import {UserCreationService} from '../session/guest-user-creation/user-creation.service';
+import {MatSnackBar} from '@angular/material';
+import {take} from 'rxjs/operators';
+import {User} from '../session/guest-user-creation/user';
+import {Food} from '../food/food';
 
 @Component({
     selector: 'app-dashboard',
@@ -10,10 +14,16 @@ import {Router} from '@angular/router';
 
 })
 export class DashboardComponent implements OnInit {
-    public myAngularxQrCode: string = null;
-    allowedFormats;
 
-    constructor(private router: Router) {
+
+    public myAngularxQrCode: string = null;
+    user: User;
+
+    constructor(private router: Router,
+                private userCreationService: UserCreationService,
+                private snackBar: MatSnackBar) {
+
+
 
     }
 
@@ -77,28 +87,25 @@ export class DashboardComponent implements OnInit {
     };
 
     ngOnInit() {
+        if (this.user == null) {
+            this.user = new User();
+
+            this.user.username = localStorage.getItem('username');
+            console.log(this.user);
+
+            this.userCreationService.findByUsername(this.user).pipe(take(1)).subscribe(
+                response => {
+                    this.user = response;
+
+
+                }
+            );
+        }
 
         this.myAngularxQrCode = 'Your QR code data string';
-        this.allowedFormats = [
-            BarcodeFormat.QR_CODE,
-            BarcodeFormat.EAN_13,
-            BarcodeFormat.CODE_128,
-            BarcodeFormat.DATA_MATRIX,
-            BarcodeFormat.AZTEC,
-            BarcodeFormat.CODABAR,
-            BarcodeFormat.CODE_39,
-            BarcodeFormat.CODE_93,
-            BarcodeFormat.DATA_MATRIX,
-            BarcodeFormat.EAN_8,
-            BarcodeFormat.ITF,
-            BarcodeFormat.PDF_417,
-            BarcodeFormat.RSS_14,
-            BarcodeFormat.UPC_A,
-            BarcodeFormat.MAXICODE,
-            BarcodeFormat.UPC_E,
-            BarcodeFormat.UPC_EAN_EXTENSION,
-            BarcodeFormat.RSS_EXPANDED
-        ];
+
+
+
 
 
         /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
@@ -119,7 +126,7 @@ export class DashboardComponent implements OnInit {
             chartPadding: {top: 0, right: 0, bottom: 0, left: 0},
         }
 
-        var dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
+        let dailySalesChart = new Chartist.Line('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
 
         this.startAnimationForLineChart(dailySalesChart);
 
@@ -142,7 +149,7 @@ export class DashboardComponent implements OnInit {
             chartPadding: {top: 0, right: 0, bottom: 0, left: 0}
         }
 
-        var completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
+        let completedTasksChart = new Chartist.Line('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
 
         // start animation for the Completed Tasks Chart - Line Chart
         this.startAnimationForLineChart(completedTasksChart);
@@ -150,14 +157,14 @@ export class DashboardComponent implements OnInit {
 
         /* ----------==========     Emails Subscription Chart initialization    ==========---------- */
 
-        var datawebsiteViewsChart = {
+        let datawebsiteViewsChart = {
             labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
             series: [
                 [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
 
             ]
         };
-        var optionswebsiteViewsChart = {
+        let optionswebsiteViewsChart = {
             axisX: {
                 showGrid: false
             },
@@ -165,7 +172,7 @@ export class DashboardComponent implements OnInit {
             high: 1000,
             chartPadding: {top: 0, right: 5, bottom: 0, left: 0}
         };
-        var responsiveOptions: any[] = [
+        let responsiveOptions: any[] = [
             ['screen and (max-width: 640px)', {
                 seriesBarDistance: 5,
                 axisX: {
@@ -175,19 +182,11 @@ export class DashboardComponent implements OnInit {
                 }
             }]
         ];
-        var websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
+        let websiteViewsChart = new Chartist.Bar('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
 
-        //start animation for the Emails Subscription Chart
+        // start animation for the Emails Subscription Chart
         this.startAnimationForBarChart(websiteViewsChart);
     }
 
 
-    scanErrorHandler(event) {
-        console.log(event);
-    }
-
-    handleQrCodeResult(selectedValue: string) {
-        // alert(selectedValue);
-        this.router.navigate(['farm']);
-    }
 }

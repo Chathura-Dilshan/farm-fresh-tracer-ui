@@ -35,4 +35,9 @@ export class FarmService {
     return this.http.get(HttpService.SERVICE_PATH + 'farms', {headers: this.headers})
         .pipe(map(response => <Farm[]>response));
   }
+
+  getAllFarmsByUserSeqAndStatus(): Observable<Farm[]> {
+    return this.http.get(HttpService.SERVICE_PATH + 'farms/findAllFarmsByUserSeq', {headers: this.headers})
+        .pipe(map(response => <Farm[]>response));
+  }
 }

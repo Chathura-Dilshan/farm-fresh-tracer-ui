@@ -1,0 +1,53 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form #farmDetailsForm="ngForm">
+                        <div class="col-md-6">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Farm</mat-label>
+                                <mat-select placeholder="FARM" name="farm"
+                                            [(ngModel)]="transactionDetails.farmSeq"
+                                            #Farm="ngModel" required>
+                                    <mat-option *ngFor="let farm of farmList"
+                                                [value]="farm.farmSeq">
+                                        {{farm.farmName}}
+                                    </mat-option>
+                                </mat-select>
+
+                                <div *ngIf="Farm.errors && (Farm.dirty || Farm.touched)">
+                                    <small class="gene-block" *ngIf="Farm.errors.required && Farm.touched"
+                                           class="text-danger">
+                                        You must include a Farm.
+                                    </small>
+                                </div>
+                            </mat-form-field>
+                        </div>
+
+                        <div *ngIf="transactionDetails.transactionDetailsSeq">
+                            <div id="print-section">
+                                <qrcode [qrdata]="myAngularxQrCode" [size]="100" [level]="'M'"></qrcode>
+                            </div>
+                            <button mat-raised-button type="submit" printSectionId="print-section" ngxPrint
+                                    class="btn btn-info pull-left">print
+                            </button>
+
+                        </div>
+                        <button mat-raised-button type="submit" (click)="addTransactionDetailsDetails()"
+                                [disabled]="farmDetailsForm.invalid"
+                                class="btn btn-danger pull-left">Generate QR
+                        </button>
+                        <button mat-raised-button type="submit" (click)="resetForm(); "
+
+                                class="btn btn-danger pull-left">Reset
+                        </button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

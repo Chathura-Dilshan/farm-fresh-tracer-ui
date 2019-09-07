@@ -41,7 +41,6 @@ export class UserCretionComponent implements OnInit {
   }
 
   saveUser(): void {
-    this.user.userType = 'SYSTEM_USER';
     this.userCreationService.postUser(this.user).pipe(take(1)).subscribe(user => {
           this.user = user;
           this.snackBar.open('Sing in success', 'success', {

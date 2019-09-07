@@ -1,0 +1,9 @@
+<div class="center">
+    <zxing-scanner start="true"
+                   [formats]="allowedFormats"
+                   (scanError)="scanErrorHandler($event)"
+                   [torch]="false"
+                   (scanSuccess)="handleQrCodeResult($event)">
+
+    </zxing-scanner>
+</div>

@@ -1,0 +1,125 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <form #bodyMassIndexForm="ngForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Weight(KG) </mat-label>
+                            <input matInput placeholder="Weight(KG)" type="number"
+                                   [(ngModel)]="bodyMassIndex.weight"
+                                   #Weight="ngModel" name="weight" required>
+
+                            <div *ngIf="Weight.errors && (Weight.dirty || Weight.touched)">
+                                <small class="gene-block" *ngIf="Weight.errors.required && Weight.touched"
+                                       class="text-danger">
+                                    You must include a weight.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Height(cm)</mat-label>
+                            <input matInput placeholder="Height(cm)" type="number"
+                                   [(ngModel)]="bodyMassIndex.height"
+                                   #Height="ngModel" name="height" required>
+
+                            <div *ngIf="Height.errors && (Height.dirty || Height.touched)">
+                                <small class="gene-block" *ngIf="Height.errors.required && Height.touched"
+                                       class="text-danger">
+                                    You must include a height.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Age(years)</mat-label>
+                            <input matInput placeholder="Age(years)" type="number"
+                                   [(ngModel)]="bodyMassIndex.age"
+                                   #Age="ngModel" name="age" required>
+
+                            <div *ngIf="Age.errors && (Age.dirty || Age.touched)">
+                                <small class="gene-block" *ngIf="Age.errors.required && Age.touched"
+                                       class="text-danger">
+                                    You must include a Age.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <mat-radio-group  [(ngModel)]="bodyMassIndex.gender" #Gender="ngModel" name="gender" aria-label="Select an option" required>
+                                <mat-radio-button value="MALE"> MALE </mat-radio-button>
+                                <mat-radio-button value="FEMALE"> FEMALE </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div *ngIf="Gender.errors && (Gender.dirty || Gender.touched)">
+                            <small class="gene-block" *ngIf="Gender.errors.required && Gender.touched"
+                                   class="text-danger">
+                                You must include a gender.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Active Status</mat-label>
+                            <mat-select placeholder="Status" name="status"
+                                        [(ngModel)]="bodyMassIndex.bodyStatus"
+                                        #Status="ngModel" required>
+                                <mat-option value="1.2">
+                                   Sedentary little/ no exercise
+                                </mat-option>
+                                <mat-option value="1.375">
+                                   Light 1-2 days/week
+                                </mat-option>
+                                <mat-option value="1.55">
+                                    Moderate 3-5 days/week
+                                </mat-option>
+                                <mat-option value="1.725">
+                                    very Active(daily)
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="Status.errors && (Status.dirty || Status.touched)">
+                                <small class="gene-block" *ngIf="Status.errors.required && Status.touched"
+                                       class="text-danger">
+                                    You must include a Status.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+
+                <button mat-raised-button type="submit" (click)="saveBodyMassIndex(); bodyMassIndexForm.resetForm()"
+                        [disabled]="bodyMassIndexForm.invalid"
+                        class="btn btn-danger pull-right">Save
+                </button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <div class="card" *ngIf="bodyMassIndex.dailyCalories">
+        <div class="card-header">
+            <h4>Your Daily Calorie Requirements</h4></div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 [(ngModel)]="bodyMassIndex.dailyCalories">{{bodyMassIndex.dailyCalories}} Calories/day</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

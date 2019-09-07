@@ -413,19 +413,10 @@
 <!--      </div>-->
 <!--  </div>-->
 <!--</div>-->
-<div  id="print-section">
-    <qrcode [qrdata]="myAngularxQrCode" [size]="100" [level]="'M'"></qrcode>
+
+<div *ngIf="user.userType === 'FARMER'">
+<app-transaction-details-farm-details></app-transaction-details-farm-details>
 </div>
 
-<div class="center">
-    <zxing-scanner start="true"
-                   [formats]="allowedFormats"
-                   (scanError)="scanErrorHandler($event)"
-                   [torch]="false"
-                   (scanSuccess)="handleQrCodeResult($event)">
-
-    </zxing-scanner>
-</div>
-
-<button printSectionId="print-section" ngxPrint>print</button>
+<app-qr-scanner></app-qr-scanner>
 

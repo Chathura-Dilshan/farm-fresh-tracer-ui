@@ -29,6 +29,7 @@ export class GuestUserCreationComponent implements OnInit {
 
     register(): void {
         this.user.userType = 'GUEST_USER';
+        console.log(this.user);
         this.userCreationService.postUser(this.user).pipe(take(1)).subscribe(user => {
                 this.user = user;
                 this.snackBar.open('Sing in success', 'success', {

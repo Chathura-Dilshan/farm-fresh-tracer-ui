@@ -16,7 +16,8 @@
                                                #Username="ngModel" name="username" required>
 
                                         <div *ngIf="Username.errors && (Username.dirty || Username.touched)">
-                                            <small class="gene-block" *ngIf="Username.errors.required && Username.touched"
+                                            <small class="gene-block"
+                                                   *ngIf="Username.errors.required && Username.touched"
                                                    class="text-danger">
                                                 You must include a username.
                                             </small>
@@ -31,7 +32,8 @@
                                                #FirstName="ngModel" name="firstName" required>
 
                                         <div *ngIf="FirstName.errors && (FirstName.dirty || FirstName.touched)">
-                                            <small class="gene-block" *ngIf="FirstName.errors.required && FirstName.touched"
+                                            <small class="gene-block"
+                                                   *ngIf="FirstName.errors.required && FirstName.touched"
                                                    class="text-danger">
                                                 You must include a first name.
                                             </small>
@@ -55,7 +57,8 @@
                                                #Password="ngModel" name="password" required>
 
                                         <div *ngIf="Password.errors && (Password.dirty || Password.touched)">
-                                            <small class="gene-block" *ngIf="Password.errors.required && Password.touched"
+                                            <small class="gene-block"
+                                                   *ngIf="Password.errors.required && Password.touched"
                                                    class="text-danger">
                                                 You must include a password.
                                             </small>
@@ -79,6 +82,41 @@
                                         </div>
                                     </mat-form-field>
                                 </div>
+
+                                <div class="col-md-6">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Farm</mat-label>
+                                        <mat-select placeholder="FARM" name="farm"
+                                                    [(ngModel)]="user.userType"
+                                                    #Farm="ngModel" required>
+                                            <mat-option value="FARMER">
+                                                FARMER
+                                            </mat-option>
+                                            <mat-option value="TRANSPORTER">
+                                                TRANSPORTER
+                                            </mat-option>
+                                            <mat-option value="WAREHOUSE_HELPER">
+                                                WAREHOUSE HELPER
+                                            </mat-option>
+                                            <mat-option value="PACKING_HELPER">
+                                                PACKING HELPER
+                                            </mat-option>
+                                            <mat-option value="SUPERMARKET_HELPER">
+                                                SUPERMARKET HELPER
+                                            </mat-option>
+                                        </mat-select>
+
+                                        <div *ngIf="Farm.errors && (Farm.dirty || Farm.touched)">
+                                            <small class="gene-block" *ngIf="Farm.errors.required && Farm.touched"
+                                                   class="text-danger">
+                                                You must include a Farm.
+                                            </small>
+                                        </div>
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                            <div class="row">
                                 <div class="col-md-6">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Role & Permission</mat-label>

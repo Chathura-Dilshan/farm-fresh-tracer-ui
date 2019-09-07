@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {HttpService} from '../../authentication/http.service';
 import {map} from 'rxjs/operators';
 import {User} from './user';
-import {Food} from '../../food/food';
 
 @Injectable()
 export class UserCreationService {
@@ -15,6 +14,10 @@ export class UserCreationService {
 
 
   postUser(user: User): Observable<User> {
+    if (user.userType === 'GUEST_USER') {
+      this.headers = new HttpHeaders({Authorization: 'Basic ' + btoa('chathura:12345')});
+
+    }
     return this.http.post(HttpService.SERVICE_PATH + 'users', user, {headers: this.headers})
         .pipe(map(response => <User>response));
   }
@@ -22,5 +25,10 @@ export class UserCreationService {
   getUsers(): Observable<User[]> {
     return this.http.get(HttpService.SERVICE_PATH + 'users', {headers: this.headers})
         .pipe(map(response => <User[]>response));
+  }
+
+  findByUsername(user: User): Observable<User> {
+    return this.http.post(HttpService.SERVICE_PATH + 'users/findByUsername', user , {headers: this.headers})
+        .pipe(map(response => <User>response));
   }
 }

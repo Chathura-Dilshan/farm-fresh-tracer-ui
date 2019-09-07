@@ -15,6 +15,7 @@ import {AuthGaurdService} from '../../authentication/auth-gaurd.service';
 import {RoleCreationComponent} from '../../session/role/role-creation/role-creation.component';
 import {UserCretionComponent} from '../../session/user/user-cretion/user-cretion.component';
 import {LocationComponent} from '../../location/location.component';
+import {BodyMassIndexComponent} from '../../body-mass-index/body-mass-index.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -72,6 +73,7 @@ export const AdminLayoutRoutes: Routes = [
     {path: 'role', canActivate: [AuthGaurdService], component: RoleCreationComponent},
     {path: 'user', canActivate: [AuthGaurdService], component: UserCretionComponent},
     {path: 'location', canActivate: [AuthGaurdService], component: LocationComponent},
+    {path: 'bodyMassIndex', canActivate: [AuthGaurdService], component: BodyMassIndexComponent},
     // {path: 'table-list', component: TableListComponent},
     // {path: 'typography', component: TypographyComponent},
     // {path: 'icons', component: IconsComponent},
