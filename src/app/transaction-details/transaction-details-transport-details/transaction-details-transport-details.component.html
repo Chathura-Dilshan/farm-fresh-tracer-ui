@@ -1,1 +1,83 @@
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-body">
+            <form #farmForm="ngForm">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width" appearance="outline">
+                            <mat-label>Vehicle No</mat-label>
+                            <input matInput placeholder="Vehicle No" type="text"
+                                   [(ngModel)]="transactionDetails.vehicleNo"
+                                   #VehicleNo="ngModel" name="vehicleNo" required>
 
+                            <div *ngIf="VehicleNo.errors && (VehicleNo.dirty || VehicleNo.touched)">
+                                <small class="gene-block" *ngIf="VehicleNo.errors.required && VehicleNo.touched"
+                                       class="text-danger">
+                                    You must include a Vehicle No.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vehicle Type</mat-label>
+                            <mat-select placeholder="Vehicle Type" name="vehicleType"
+                                        [(ngModel)]="transactionDetails.vehicleType"
+                                        #VehicleType="ngModel" required>
+                                <mat-option value="VAN">
+                                    VAN
+                                </mat-option>
+                                <mat-option value="LORRY">
+                                    LORRY
+                                </mat-option>
+                            </mat-select>
+
+                            <div *ngIf="VehicleType.errors && (VehicleType.dirty || VehicleType.touched)">
+                                <small class="gene-block" *ngIf="VehicleType.errors.required && VehicleType.touched"
+                                       class="text-danger">
+                                    You must include a Vehicle Type.
+                                </small>
+                            </div>
+                        </mat-form-field>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="full-wid" appearance="outline">
+                            <mat-label>Pick Date</mat-label>
+                            <input matInput [owlDateTime]="fromDate" [owlDateTimeTrigger]="fromDate"
+                                   placeholder="From Date" name="fromDate" required
+                                   [(ngModel)]="transactionDetails.transporterPickDate"
+                                   #FromDate="ngModel">
+                            <mat-icon
+                                     matSuffix [owlDateTimeTrigger]="fromDate">date_range
+                            </mat-icon>
+                            <owl-date-time [pickerType]="'calendar'" #fromDate></owl-date-time>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field class="full-wid" appearance="outline">
+                            <mat-label>Delivered Date</mat-label>
+                            <input matInput [owlDateTime]="toDate" [owlDateTimeTrigger]="toDate"
+                                   placeholder="To Date" name="toDate" required
+                                   [(ngModel)]="transactionDetails.transporterDeliveredDate" #ToDate="ngModel"
+                                   [min]="transactionDetails.transporterPickDate">
+                            <mat-icon
+                                     matSuffix [owlDateTimeTrigger]="toDate">date_range
+                            </mat-icon>
+                            <owl-date-time [pickerType]="'calendar'" #toDate></owl-date-time>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <button mat-raised-button type="submit" (click)="saveTransporterDetails()" [disabled]="farmForm.invalid"
+                        class="btn btn-danger pull-right">Save Farm
+                </button>
+                <div class="clearfix"></div>
+            </form>
+        </div>
+    </div>
+</div>

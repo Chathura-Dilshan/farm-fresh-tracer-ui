@@ -9,7 +9,7 @@ import {UserProfileComponent} from '../../user-profile/user-profile.component';
 import {
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule,
+    MatFormFieldModule, MatIconModule,
     MatInputModule,
     MatRadioModule,
     MatRippleModule,
@@ -47,6 +47,8 @@ import {TransactionDetailsWarehouseDetailsComponent} from '../../transaction-det
 import {TransactionDetailsSupermarketDetailsComponent} from '../../transaction-details/transaction-details-supermarket-details/transaction-details-supermarket-details.component';
 import {GuestUserCreationDialogComponent} from '../../session/login/login.component';
 import {QrScannerComponent} from '../../qr-scanner/qr-scanner.component';
+import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
     imports: [
@@ -66,7 +68,11 @@ import {QrScannerComponent} from '../../qr-scanner/qr-scanner.component';
         NgxPrintModule,
         ZXingScannerModule,
         NgxMatSelectSearchModule,
-        MatRadioModule
+        MatRadioModule,
+        MatIconModule,
+        // BrowserModule,
+        OwlDateTimeModule,
+        OwlNativeDateTimeModule,
     ],
     declarations: [
         UserProfileComponent,

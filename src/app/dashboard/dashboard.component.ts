@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import * as Chartist from 'chartist';
 import {Router} from '@angular/router';
 import {UserCreationService} from '../session/guest-user-creation/user-creation.service';
@@ -15,8 +15,9 @@ import {Food} from '../food/food';
 })
 export class DashboardComponent implements OnInit {
 
-
     public myAngularxQrCode: string = null;
+    public transactionSeq: any;
+    public status: any;
     user: User;
 
     constructor(private router: Router,
@@ -96,8 +97,6 @@ export class DashboardComponent implements OnInit {
             this.userCreationService.findByUsername(this.user).pipe(take(1)).subscribe(
                 response => {
                     this.user = response;
-
-
                 }
             );
         }
@@ -189,4 +188,11 @@ export class DashboardComponent implements OnInit {
     }
 
 
+    test(event: any) {
+        this.transactionSeq = event;
+    }
+
+    test1(event: any) {
+        this.status = event;
+    }
 }

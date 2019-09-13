@@ -1,9 +1,17 @@
-<div class="center">
-    <zxing-scanner start="true"
-                   [formats]="allowedFormats"
-                   (scanError)="scanErrorHandler($event)"
-                   [torch]="false"
-                   (scanSuccess)="handleQrCodeResult($event)">
+<div class="container-fluid">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="center">
+                    <zxing-scanner start="true"
+                                   [formats]="allowedFormats"
+                                   (scanError)="scanErrorHandler($event)"
+                                   [torch]="false"
+                                   (scanSuccess)="handleQrCodeResult($event)">
 
-    </zxing-scanner>
+                    </zxing-scanner>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

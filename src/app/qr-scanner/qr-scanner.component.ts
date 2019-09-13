@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import BarcodeFormat from '../sheard/BarcodeFormat';
 
 @Component({
@@ -8,11 +8,15 @@ import BarcodeFormat from '../sheard/BarcodeFormat';
 })
 export class QrScannerComponent implements OnInit {
   allowedFormats;
+  @Output() transactionIds = new EventEmitter<any>();
+  @Output() status = new EventEmitter<any>();
 
   constructor() {
   }
 
   ngOnInit() {
+
+
     this.allowedFormats = [
       BarcodeFormat.QR_CODE,
       BarcodeFormat.EAN_13,
@@ -42,6 +46,9 @@ export class QrScannerComponent implements OnInit {
   handleQrCodeResult(selectedValue: string) {
     alert(selectedValue);
     // this.router.navigate(['farm']);
+    const toArray =  selectedValue.split('/');
+    this.transactionIds.emit(selectedValue);
+    this.status.emit(toArray[1]);
   }
 
 }

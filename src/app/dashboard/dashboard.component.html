@@ -415,8 +415,12 @@
 <!--</div>-->
 
 <div *ngIf="user.userType === 'FARMER'">
-<app-transaction-details-farm-details></app-transaction-details-farm-details>
+    <app-transaction-details-farm-details></app-transaction-details-farm-details>
+</div>
+<div *ngIf="user.userType === 'TRANSPORTER'">
+    <app-transaction-details-transport-details [transactionSeq]="transactionSeq" [status]="status"
+                                               *ngIf="status==='1'"></app-transaction-details-transport-details>
 </div>
 
-<app-qr-scanner></app-qr-scanner>
+<app-qr-scanner (transactionIds)="test($event)" (status)="test1($event)"></app-qr-scanner>
 
