@@ -13,7 +13,7 @@ import {BodyMassIndexService} from '../body-mass-index.service';
 })
 export class BodyMassIndexCreationComponent implements OnInit {
 
-  @Input() bodyMassIndex: BodyMassIndex;
+bodyMassIndex: BodyMassIndex;
   foodList: any[];
   userList: any[];
 
@@ -39,10 +39,9 @@ export class BodyMassIndexCreationComponent implements OnInit {
   }
 
   saveBodyMassIndex(): void {
+    console.log(this.bodyMassIndex);
     this.bodyMassIndexService.postBodyMassIndex(this.bodyMassIndex).pipe(take(1)).subscribe(bodyMassIndex => {
           this.bodyMassIndex = bodyMassIndex;
-
-
 
           this.snackBar.open('Body Mass Index Saved', 'success', {
             duration: 3000

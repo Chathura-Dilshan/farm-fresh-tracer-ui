@@ -421,6 +421,10 @@
     <app-transaction-details-transport-details [transactionSeq]="transactionSeq" [status]="status"
                                                *ngIf="status==='1'"></app-transaction-details-transport-details>
 </div>
+<div *ngIf="user.userType === 'PACKING'">
+    <app-transaction-details-packing-details [transactionSeq]="transactionSeq" [status]="status"
+                                               *ngIf="status==='2'"></app-transaction-details-packing-details>
+</div>
 
 <app-qr-scanner (transactionIds)="test($event)" (status)="test1($event)"></app-qr-scanner>
 

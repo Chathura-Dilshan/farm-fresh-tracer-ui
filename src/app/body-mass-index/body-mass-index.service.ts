@@ -17,6 +17,7 @@ export class BodyMassIndexService {
 
 
   postBodyMassIndex(bodyMassIndex: BodyMassIndex): Observable<BodyMassIndex> {
+    console.log(bodyMassIndex);
     return this.http.post(HttpService.SERVICE_PATH + 'bodyMassIndexes', bodyMassIndex, {headers: this.headers})
         .pipe(map(response => <BodyMassIndex>response));
   }

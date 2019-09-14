@@ -74,7 +74,7 @@
                             <mat-label>Active Status</mat-label>
                             <mat-select placeholder="Status" name="status"
                                         [(ngModel)]="bodyMassIndex.bodyStatus"
-                                        #Status="ngModel" required>
+                                        #BodyStatus="ngModel" required>
                                 <mat-option value="1.2">
                                    Sedentary little/ no exercise
                                 </mat-option>
@@ -89,8 +89,8 @@
                                 </mat-option>
                             </mat-select>
 
-                            <div *ngIf="Status.errors && (Status.dirty || Status.touched)">
-                                <small class="gene-block" *ngIf="Status.errors.required && Status.touched"
+                            <div *ngIf="BodyStatus.errors && (BodyStatus.dirty || BodyStatus.touched)">
+                                <small class="gene-block" *ngIf="BodyStatus.errors.required && BodyStatus.touched"
                                        class="text-danger">
                                     You must include a Status.
                                 </small>
