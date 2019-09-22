@@ -28,7 +28,8 @@ export class TransactionDetailsTransportDetailsComponent implements OnInit {
       private foodService: FoodService,
       private farmService: FarmService,
       private userService: UserCreationService,
-      private snackBar: MatSnackBar) {
+      private snackBar: MatSnackBar
+  ) {
   }
 
   ngOnInit() {
@@ -36,8 +37,8 @@ export class TransactionDetailsTransportDetailsComponent implements OnInit {
       this.transactionDetails = new TransactionDetails();
     }
 
-    alert(this.transactionSeq);
-    alert(this.status);
+    // alert(this.transactionSeq);
+    // alert(this.status);
 
     this.farmService.getAllFarmsByUserSeqAndStatus().pipe(take(1)).subscribe(
         response => this.farmList = response
@@ -57,7 +58,7 @@ export class TransactionDetailsTransportDetailsComponent implements OnInit {
       transactionDetails.vehicleType = this.transactionDetails.vehicleType;
       transactionDetails.transporterPickDate = this.transactionDetails.transporterPickDate;
       transactionDetails.transporterDeliveredDate = this.transactionDetails.transporterDeliveredDate;
-      this.transactionDetails.currentStatus = 2;
+      transactionDetails.currentStatus = 2;
       this.transactionDetailsService.putTransactionDetails(transactionDetails).pipe(take(1)).subscribe(transactionDetail => {
             this.transactionDetails = transactionDetail;
             this.myAngularxQrCode = String(this.transactionDetails.transactionDetailsSeq + '/' + this.transactionDetails.currentStatus);

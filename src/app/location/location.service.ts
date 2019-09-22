@@ -35,7 +35,7 @@ export class LocationService {
     }
 
     getAllLocationsByUserSeqAndStatus(): Observable<Location[]> {
-        return this.http.get(HttpService.SERVICE_PATH + 'Locations/findAllLocationsByUserSeq', {headers: this.headers})
+        return this.http.get(HttpService.SERVICE_PATH + 'locations/findAllLocationsByUserSeq', {headers: this.headers})
             .pipe(map(response => <Location[]>response));
     }
 }

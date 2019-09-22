@@ -25,6 +25,12 @@ import { TransactionDetailsPackingDetailsComponent } from './transaction-details
 import { TransactionDetailsWarehouseDetailsComponent } from './transaction-details/transaction-details-warehouse-details/transaction-details-warehouse-details.component';
 import { TransactionDetailsSupermarketDetailsComponent } from './transaction-details/transaction-details-supermarket-details/transaction-details-supermarket-details.component';
 import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+import {TypographyComponent} from './typography/typography.component';
+import {MapsComponent} from './maps/maps.component';
+import {NotificationsComponent} from './notifications/notifications.component';
+import {UpgradeComponent} from './upgrade/upgrade.component';
+import {IconsComponent} from './icons/icons.component';
+import {TableListComponent} from './table-list/table-list.component';
 
 @NgModule({
   imports: [
@@ -49,7 +55,13 @@ import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
     LoginComponent,
     AdminLayoutComponent,
     GuestUserCreationComponent,
-    GuestUserCreationDialogComponent
+    GuestUserCreationDialogComponent,
+    TypographyComponent,
+    MapsComponent,
+    NotificationsComponent,
+    UpgradeComponent,
+    IconsComponent,
+    TableListComponent
 
   ],
   providers: [

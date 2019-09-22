@@ -45,7 +45,8 @@ export class TransactionDetailsFarmDetailsComponent implements OnInit {
     this.transactionDetails.currentStatus = 1;
     this.transactionDetailsService.postTransactionDetails(this.transactionDetails).pipe(take(1)).subscribe(transactionDetails => {
           this.transactionDetails = transactionDetails;
-          this.myAngularxQrCode = String(this.transactionDetails.transactionDetailsSeq + '/' + this.transactionDetails.currentStatus);
+          this.myAngularxQrCode = String(this.transactionDetails.transactionDetailsSeq);
+          // this.myAngularxQrCode = String(this.transactionDetails.transactionDetailsSeq + '/' + this.transactionDetails.currentStatus);
           this.snackBar.open('QR Generated success', 'success', {
             duration: 3000
           });

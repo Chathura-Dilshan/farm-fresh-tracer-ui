@@ -50,18 +50,15 @@
                                     <mat-icon
                                              matSuffix [owlDateTimeTrigger]="toDate">date_range
                                     </mat-icon>
-                                    <owl-date-time [pickerType]="'dateTime'" #toDate></owl-date-time>
+                                    <owl-date-time [pickerType]="'calendar'" #toDate></owl-date-time>
                                 </mat-form-field>
                             </div>
+
+
                         </div>
 
-                        <button mat-raised-button type="submit" (click)="addTransactionDetailsDetails()"
-                                [disabled]="packingDetailsForm.invalid"
-                                class="btn btn-danger pull-left">Generate QR
-                        </button>
-                        <button mat-raised-button type="submit" (click)="resetForm(); "
-
-                                class="btn btn-danger pull-left">Reset
+                        <button mat-raised-button type="submit" (click)="saveTransporterDetails()" [disabled]="packingDetailsForm.invalid"
+                                class="btn btn-danger pull-right">Save
                         </button>
                         <div class="clearfix"></div>
                     </form>

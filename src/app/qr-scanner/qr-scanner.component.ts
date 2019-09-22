@@ -1,5 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import BarcodeFormat from '../sheard/BarcodeFormat';
+import {TransactionDetailsService} from '../transaction-details/transaction-details.service';
 
 @Component({
   selector: 'app-qr-scanner',
@@ -10,8 +11,11 @@ export class QrScannerComponent implements OnInit {
   allowedFormats;
   @Output() transactionIds = new EventEmitter<any>();
   @Output() status = new EventEmitter<any>();
+  status2: any;
 
-  constructor() {
+  constructor(
+      private transactionDetailsService: TransactionDetailsService,
+  ) {
   }
 
   ngOnInit() {
@@ -46,9 +50,12 @@ export class QrScannerComponent implements OnInit {
   handleQrCodeResult(selectedValue: string) {
     alert(selectedValue);
     // this.router.navigate(['farm']);
-    const toArray =  selectedValue.split('/');
-    this.transactionIds.emit(selectedValue);
-    this.status.emit(toArray[1]);
+    const toArray = selectedValue.split('/');
+
+    this.transactionDetailsService.findTransactionDetails(Number(toArray[0])).subscribe(transactionDetails => {
+      this.transactionIds.emit(selectedValue);
+      this.status.emit(transactionDetails.currentStatus.toString());
+    });
   }
 
 }
