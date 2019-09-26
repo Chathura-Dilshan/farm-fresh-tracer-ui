@@ -6,8 +6,8 @@
                     <form #packingDetailsForm="ngForm">
                         <div class="col-md-6">
                             <mat-form-field appearance="outline">
-                                <mat-label>Packing</mat-label>
-                                <mat-select placeholder="Packing" name="Packing"
+                                <mat-label>Locations</mat-label>
+                                <mat-select placeholder="Locations" name="Packing"
                                             [(ngModel)]="transactionDetails.packingLocationSeq"
                                             #Location="ngModel" required>
                                     <mat-option *ngFor="let location of locationList"
@@ -46,7 +46,7 @@
                                     <input matInput [owlDateTime]="toDate" [owlDateTimeTrigger]="toDate"
                                            placeholder="To Date" name="toDate" required
                                            [(ngModel)]="transactionDetails.packingDeliveredDate" #ToDate="ngModel"
-                                           [min]="transactionDetails.packingReceivedDate">
+                                           [min]="transactionDetails.packingReceivedDate" [disabled]="deliveryDate">
                                     <mat-icon
                                              matSuffix [owlDateTimeTrigger]="toDate">date_range
                                     </mat-icon>

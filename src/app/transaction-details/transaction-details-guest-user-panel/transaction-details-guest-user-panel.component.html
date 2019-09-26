@@ -1,0 +1,126 @@
+<div style="margin-top: 100px; padding: 5px 10px;">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div *ngIf="farm !== null">
+
+
+                        <h3>Food Details</h3>
+                        <table class="table table-dark table-responsive-md table-responsive-xs table-responsive-lg table-responsive-sm">
+
+                            <tbody>
+                            <tr>
+                                <th>Food Name</th>
+                                <th>Calorie</th>
+                                <th>Fat</th>
+                                <th>Cholesterol</th>
+                                <th>Sodium</th>
+                                <th>protein</th>
+                                <th>Carbohydrate</th>
+                                <th>Vitamin A</th>
+                                <th>Vitamin C</th>
+                                <th>Iron</th>
+                                <th>Sugars</th>
+
+                            </tr>
+                            <tr>
+                                <td>{{farm.food.foodName}}</td>
+                                <td>{{farm.food.calorie}}</td>
+                                <td>{{farm.food.fat}}</td>
+                                <td>{{farm.food.cholesterol}}</td>
+                                <td>{{farm.food.sodium}}</td>
+                                <td>{{farm.food.protein}}</td>
+                                <td>{{farm.food.carbohydrate}}</td>
+                                <td>{{farm.food.vitaminA}}</td>
+                                <td>{{farm.food.vitaminC}}</td>
+                                <td>{{farm.food.iron}}</td>
+                                <td>{{farm.food.calcium}}</td>
+                                <td>{{farm.food.sugars}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Farm Details</h3>
+                        <table class="table table-dark table-responsive-md table-responsive-xs table-responsive-lg table-responsive-sm">
+
+                            <tbody>
+                            <tr>
+                                <td>Farm Name</td>
+                                <td>{{farm.farmName}}</td>
+                            </tr>
+                            <tr>
+                                <td> Address</td>
+                                <td>{{farm.address}}</td>
+                            </tr>
+                            <tr>
+                                <td>Contact No</td>
+                                <td>{{farm.farmName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Used Fertilizers</td>
+                                <td>{{farm.fertilizerName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Used pesticides</td>
+                                <td>{{farm.pesticideName}}</td>
+                            </tr>
+                            <tr>
+                                <td>Used pesticides</td>
+                                <td>{{farm.pesticideName}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <h3>Track Details</h3>
+                        <table class="table table-dark table-responsive-md table-responsive-xs table-responsive-lg table-responsive-sm">
+
+                            <tbody>
+                            <tr>
+                                <td>The day of  food Delivery to transporter</td>
+                                <td>2019-09-01</td>
+                            </tr>
+                            <tr>
+                                <td>The day of  food Delivery to packing</td>
+                                <td>2019-09-01</td>
+                            </tr>
+                            <tr>
+                                <td>The day of  food Delivery to Supermarket</td>
+                                <td>2019-09-11</td>
+                            </tr>
+<!--                            <tr>-->
+<!--                                <td>{{minutes | async}}<span>Minutes</span></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>{{seconds | async}}<span>Seconds</span></td>-->
+<!--                            </tr>-->
+
+                            <tr>
+                                <td>{{days | async}} <span>Days Old</span></td>
+                            </tr>
+
+
+                            </tbody>
+                        </table>
+
+                        <h3>Suggestions</h3>
+                        <table class="table table-dark table-responsive-md table-responsive-xs table-responsive-lg table-responsive-sm">
+
+                            <tbody>
+                            <tr>
+                                <td style="color: red">Daily intake</td>
+                                <td style="color: red">1533.56 calorie</td>
+                            </tr>
+                            <tr>
+                                <td style="color: red">You need to eat</td>
+                                <td style="color: red">20 pieces</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Farm} from '../farm/farm';
 import {Observable} from 'rxjs';
@@ -34,6 +34,11 @@ export class FarmService {
   getFarms(): Observable<Farm[]> {
     return this.http.get(HttpService.SERVICE_PATH + 'farms', {headers: this.headers})
         .pipe(map(response => <Farm[]>response));
+  }
+
+  getFarmByFarmSeq(farmSeq: number): Observable<Farm> {
+    return this.http.get(HttpService.SERVICE_PATH + 'farms/find/' + farmSeq, {headers: this.headers})
+        .pipe(map(response => <Farm>response));
   }
 
   getAllFarmsByUserSeqAndStatus(): Observable<Farm[]> {

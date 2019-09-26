@@ -13,7 +13,7 @@ import {
     MatInputModule,
     MatRadioModule,
     MatRippleModule,
-    MatSelectModule,
+    MatSelectModule, MatTableModule,
     MatTabsModule,
     MatTooltipModule
 } from '@angular/material';
@@ -49,6 +49,7 @@ import {GuestUserCreationDialogComponent} from '../../session/login/login.compon
 import {QrScannerComponent} from '../../qr-scanner/qr-scanner.component';
 import {OwlDateTimeModule, OwlNativeDateTimeModule} from 'ng-pick-datetime';
 import {BrowserModule} from '@angular/platform-browser';
+import {TransactionDetailsGuestUserPanelComponent} from '../../transaction-details/transaction-details-guest-user-panel/transaction-details-guest-user-panel.component';
 
 @NgModule({
     imports: [
@@ -73,6 +74,7 @@ import {BrowserModule} from '@angular/platform-browser';
         // BrowserModule,
         OwlDateTimeModule,
         OwlNativeDateTimeModule,
+        MatTableModule,
     ],
     declarations: [
         UserProfileComponent,
@@ -98,6 +100,7 @@ import {BrowserModule} from '@angular/platform-browser';
         TransactionDetailsPackingDetailsComponent,
         TransactionDetailsWarehouseDetailsComponent,
         TransactionDetailsSupermarketDetailsComponent,
+        TransactionDetailsGuestUserPanelComponent,
         QrScannerComponent
         // TableListComponent,
         // TypographyComponent,
